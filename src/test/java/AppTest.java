@@ -39,5 +39,13 @@ public class AppTest extends FluentTest {
       goTo("http://localhost:4567/");
       assertThat(pageSource()).contains("Hair Salon");
     }
-    
+
+    @Test
+    public void stylistIsCreatedTest() {
+      goTo("http://localhost:4567/");
+      fill("#name").with("Fozzie Bear");
+      submit(".btn");
+      assertThat(pageSource()).contains("Fozzie Bear");
+    }
+
   }
