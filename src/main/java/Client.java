@@ -10,6 +10,11 @@ public class Client {
     this.name = name;
   }
 
+  public Client(String name, int stylist_id) {
+    this.name = name;
+    this.stylist_id = stylist_id;
+  }
+
   public String getName() {
   return name;
   }
@@ -18,8 +23,12 @@ public class Client {
     return id;
   }
 
+  public int getStylistId() {
+    return stylist_id;
+  }
+
   public static List<Client> all() {
-    String sql = "SELECT id, name FROM clients;";
+    String sql = "SELECT id, name, stylist_id FROM clients;";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Client.class);
     }
@@ -27,9 +36,10 @@ public class Client {
 
   public void save() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients (name) VALUES (:name);";
+      String sql = "INSERT INTO clients (name, stylist_id) VALUES (:name, :stylist_id);";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
+        .addParameter("stylist_id", this.stylist_id)
         .executeUpdate()
         .getKey();
     }
@@ -52,7 +62,8 @@ public class Client {
     } else {
       Client newClient = (Client) otherClient;
       return this.getName().equals(newClient.getName()) &&
-             this.getId() == newClient.getId();
+             this.getId() == newClient.getId() &&
+             this.getStylistId() == newClient.getStylistId();
     }
   }
 
