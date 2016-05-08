@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-archivesBaseName = "hair-salon-clients"
+archivesBaseName = "hair-salon-java-cr3"
 version = '1.0'
 mainClassName = "App"
 
