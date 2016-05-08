@@ -25,4 +25,10 @@ public class StylistTest {
     assertEquals(true, myStylist instanceof Stylist);
   }
 
+  @Test
+  public void getName_stylistInstantiatesWithName_String() {
+    Stylist myStylist = new Stylist("Gonzo");
+    assertEquals("Gonzo", myStylist.getName());
+  }
+
 }
