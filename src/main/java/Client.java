@@ -35,6 +35,16 @@ public class Client {
     }
   }
 
+  public static Client find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE id=:id;";
+      Client client = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Client.class);
+      return client;
+    }
+  }
+
   @Override
   public boolean equals(Object otherClient) {
     if (!(otherClient instanceof Client)) {
