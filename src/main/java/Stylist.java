@@ -13,6 +13,10 @@ public class Stylist {
     return name;
   }
 
+  public int getId() {
+    return id;
+  }
+
   public static List<Stylist> all() {
     String sql = "SELECT id, name FROM stylists;";
     try(Connection con = DB.sql2o.open()) {
@@ -23,9 +27,10 @@ public class Stylist {
   public void save() {
     try (Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO stylists (name) VALUES (:name);";
-      con.createQuery(sql)
+      this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
-        .executeUpdate();
+        .executeUpdate()
+        .getKey();
     }
   }
 
@@ -35,7 +40,8 @@ public class Stylist {
       return false;
     } else {
       Stylist newStylist = (Stylist) otherStylist;
-      return this.getName().equals(newStylist.getName());
+      return this.getName().equals(newStylist.getName()) &&
+             this.getId() == newStylist.getId();
     }
   }
 
