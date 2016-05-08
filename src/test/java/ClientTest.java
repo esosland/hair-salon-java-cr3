@@ -24,10 +24,15 @@ public class ClientTest {
   }
 
   @Test
-    public void getName_clientInstantiatesWithName_String() {
-      Client myClient = new Client("Slash");
-      assertEquals("Slash", myClient.getName());
-    }
+  public void getName_clientInstantiatesWithName_String() {
+    Client myClient = new Client("Slash");
+    assertEquals("Slash", myClient.getName());
+  }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Client.all().size(), 0);
+  }
 
 
 }

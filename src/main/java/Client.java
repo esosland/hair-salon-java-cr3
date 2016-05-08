@@ -13,4 +13,11 @@ public class Client {
   public String getName() {
   return name;
   }
+
+  public static List<Client> all() {
+    String sql = "SELECT id, name FROM clients;";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Client.class);
+    }
+  }
 }
