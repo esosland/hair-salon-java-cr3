@@ -1,1 +1,7 @@
+<h1>$stylist.getName()</h1>
 
+<h2>Clients:</h2>
+
+#foreach($client in $stylist.getClients())
+  <p>$client.getName()</p>
+#end
