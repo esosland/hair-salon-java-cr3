@@ -1,0 +1,18 @@
+body {
+  background-color: #FF33FF;
+  text-align: center;
+  font-size: 24pt;
+  background-image: url();
+}
+
+.title {
+  background-color: #CCFF00;
+  text-align: center;
+  color: #6633FF;
+  font-size: 70px;
+  width: 100%;
+}
+
+a {
+  color: 	#00fd8d;
+}
