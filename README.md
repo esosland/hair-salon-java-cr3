@@ -8,9 +8,6 @@
 
 _This is a Java web app for a hair salon that lets a user view and add to a list of stylists, as well as click on stylists and view or add clients to the stylists. The input is stored in a database._
 
-##Database Tables
-
-
 
 ## Setup/Installation Requirements
 
