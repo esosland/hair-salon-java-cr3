@@ -57,5 +57,16 @@ public class AppTest extends FluentTest {
       assertThat(pageSource()).contains("Fozzie Bear");
     }
 
+    @Test
+    public void clientsAreAddedAndDisplayed() {
+      goTo("http://localhost:4567/");
+      fill("#name").with("Fozzie Bear");
+      submit(".btn");
+      fill("#name").with("Richie Sambora");
+      submit(".btn");
+      assertThat(pageSource()).contains("Richie Sambora");
+    }
+
+
 
   }

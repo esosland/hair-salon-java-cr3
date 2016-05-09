@@ -2,6 +2,24 @@
 
 <h2>Clients:</h2>
 
+#if($clients.size() > 0)
 #foreach($client in $stylist.getClients())
   <p>$client.getName()</p>
 #end
+
+#else
+  <h2>$stylist.getName() does not currently have any clients</h2>
+#end
+
+<h2>Add a Client:</h2>
+<form action="/stylist/$stylist.getId()" method="post">
+  <label for="name">Client Name</label>
+  <input id="name" name="name" type="text" required>
+
+  <div>
+    <button type="submit" class="btn">Add Client</button>
+  </div>
+  <div>
+    <a href="/" class="btn" id="home">Back To Homepage</a>
+  </div>
+</form>
